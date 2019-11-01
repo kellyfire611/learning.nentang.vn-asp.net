@@ -13,7 +13,6 @@ namespace WebBanHang.Controllers
             return View();
         }
 
-        [Route("gioi-thieu")]
         public ActionResult GioiThieu()
         {
             ViewBag.Message = "Trang giới thiệu";

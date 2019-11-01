@@ -73,8 +73,8 @@ C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\
 C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csprojAssemblyReference.cache
 C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CoreCompileInputs.cache
 C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
 C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll
 C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.pdb
+C:\Users\STUDENT\source\repos\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csprojAssemblyReference.cache

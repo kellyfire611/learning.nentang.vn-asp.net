@@ -4,7 +4,7 @@
         <div class="navbar-collapse collapse" id="navbarCollapse" style="">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/php/twig">Trang chủ <span class="sr-only">(current)</span></a>
+                    @Html.RouteLink("Trang chủ", "page.trang_chu", null, new { @class="nav-link"})
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/php/twig/backend/pages/dashboard">Quản trị</a>
@@ -30,7 +30,7 @@
             </li>
             <li class="nav-item text-nowrap">
                 <!-- Nếu chưa đăng nhập thì hiển thị nút Đăng nhập -->
-                <a class="nav-link" href="/php/twig/frontend/pages/login">Đăng nhập</a>
+                @Html.RouteLink("Đăng nhập", "page.dang_nhap", null, new { @class="nav-link"})
             </li>
         </ul>
     </div>

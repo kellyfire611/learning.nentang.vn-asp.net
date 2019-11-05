@@ -12,7 +12,15 @@ namespace WebBanHang
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+
+            // route trang chủ
+            // URL: /
+            routes.MapRoute(
+                name: "page.trang_chu",
+                url: "",
+                defaults: new { controller = "Page", action = "Index" }
+            );
+
             // route trang Giới thiệu
             // URL: /gioi-thieu
             routes.MapRoute(
@@ -27,6 +35,22 @@ namespace WebBanHang
                 name: "page.lien_he",
                 url: "lien-he",
                 defaults: new { controller = "Page", action = "LienHe" }
+            );
+
+            // route trang Đăng nhập
+            // URL: /dang-nhap
+            routes.MapRoute(
+                name: "page.dang_nhap",
+                url: "dang-nhap",
+                defaults: new { controller = "Page", action = "DangNhap" }
+            );
+
+            // route trang Đăng ký
+            // URL: /dang-ky
+            routes.MapRoute(
+                name: "page.dang_ky",
+                url: "dang-ky",
+                defaults: new { controller = "Page", action = "DangKy" }
             );
 
             // Route mặc định của Trang web

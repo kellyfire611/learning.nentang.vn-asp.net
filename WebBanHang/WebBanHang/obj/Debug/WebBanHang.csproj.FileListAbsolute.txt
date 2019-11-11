@@ -158,3 +158,7 @@ D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHa
 D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
 D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll
 D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.pdb
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\EntityFramework.dll
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\EntityFramework.SqlServer.dll
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\EntityFramework.xml
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\EntityFramework.SqlServer.xml

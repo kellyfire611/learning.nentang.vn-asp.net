@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -51,10 +52,39 @@ namespace WebBanHang.Controllers
         }
 
         [HttpPost]
-        public string DangKy(string last_name, string first_name, string email, string password, string avatar, string job_title, string department, int manager_id, string phone, string address1, string address2, string city, string state, string postal_code, string country)
+        public string DangKy(HttpPostedFileBase avatar, string last_name, string first_name, string email, string password, string job_title, string department, int manager_id, string phone, string address1, string address2, string city, string state, string postal_code, string country)
         {
             try
             {
+                string _FileName = "";
+                string datetimeFolderName = "";
+                // Di chuyển file vào thư mục mong muốn
+                if (avatar.ContentLength > 0)
+                {
+                    _FileName = Path.GetFileName(avatar.FileName);                   // QRCode_NenTangUrl.png
+                    string _FileNameExtension = Path.GetExtension(avatar.FileName);  // .png
+                    if((_FileNameExtension == ".png" 
+                        || _FileNameExtension == ".jpg" 
+                        || _FileNameExtension == ".jpeg"
+                        || _FileNameExtension == ".docx" 
+                        || _FileNameExtension == ".xls" 
+                        || _FileNameExtension == ".xlsx") == false)
+                    {
+                        return String.Format("File có đuôi {0} không được chấp nhận. Vui lòng kiểm tra lại!", _FileNameExtension);
+                    }
+
+                    DateTime now = DateTime.Now;
+                    datetimeFolderName = String.Format("{0}{1}{2}{3}{4}", now.Year, now.Month, now.Day, now.Hour, now.Minute); // 201911122018
+                    string uploadFolderPath = Server.MapPath("~/UploadedFiles/" + datetimeFolderName); //UploadedFiles/201911122018/ten file upload...
+                    if (Directory.Exists(uploadFolderPath) == false) // Nếu thư mục cần lưu trữ file upload không tồn tại (chưa có) => Tạo mới
+                    {
+                        Directory.CreateDirectory(uploadFolderPath);
+                    }
+
+                    string _path = Path.Combine(uploadFolderPath, _FileName);
+                    avatar.SaveAs(_path);
+                }
+
                 using (QuanLyBanHangEntities context = new QuanLyBanHangEntities())
                 {
                     // Tạo 1 dòng mới `employee`
@@ -63,7 +93,11 @@ namespace WebBanHang.Controllers
                     newRow.first_name = first_name;
                     newRow.email = email;
                     newRow.password = password;
-                    newRow.avatar = avatar;
+
+                    // Save tên file vào database
+                    // 201911122018/QRCode_NenTangUrl.png
+                    newRow.avatar = datetimeFolderName + "/" + _FileName; 
+
                     newRow.job_title = job_title;
                     newRow.department = department;
                     newRow.manager_id = manager_id;

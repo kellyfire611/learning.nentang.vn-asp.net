@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="EF\configs.cs">
       <DependentUpon>QuanLyBanHangEF.tt</DependentUpon>
@@ -175,9 +176,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\QuanLyBanHang.mdf" />
+    <Content Include="App_Data\QuanLyBanHang.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\QuanLyBanHang_log.ldf">
       <DependentUpon>QuanLyBanHang.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -189,6 +193,7 @@
     <Content Include="Content\img\slider-1.jpg" />
     <Content Include="Content\img\slider-2.jpg" />
     <Content Include="Content\img\slider-3.jpg" />
+    <Content Include="DocumentFiles\BangBaoGia_Thang11_2019.txt" />
     <Content Include="EF\QuanLyBanHangEF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>QuanLyBanHangEF.Context.cs</LastGenOutput>
@@ -223,6 +228,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="UploadedFiles\201911122020\QRCode_NenTangUrl.png" />
+    <Content Include="UploadedFiles\201911122038\logo-nentang.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -247,6 +254,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

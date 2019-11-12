@@ -2,7 +2,7 @@
     ViewBag.Title = "Đăng ký";
 }
 
-<form name="frmdangky" id="frmdangky" method="post" action="/Account/DangKy">
+<form name="frmdangky" id="frmdangky" method="post" action="/Account/DangKy" enctype="multipart/form-data">
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -48,7 +48,7 @@
                                     <i class="fa fa-user"></i>
                                 </span>
                             </div>
-                            <input class="form-control" type="text" placeholder="Ảnh đại diện" name="avatar">
+                            <input class="form-control" type="file" placeholder="Ảnh đại diện" name="avatar">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">

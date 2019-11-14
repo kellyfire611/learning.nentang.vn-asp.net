@@ -32,6 +32,7 @@ namespace WebBanHang.EF
         public string quantity_per_unit { get; set; }
         public byte discontinued { get; set; }
         public string category { get; set; }
+        public string image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_details> order_details { get; set; }

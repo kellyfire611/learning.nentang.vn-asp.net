@@ -10,11 +10,11 @@
         <EntityTypeShape EntityType="QuanLyBanHangModel.employees" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBanHangModel.order_details" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBanHangModel.orders" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanHangModel.products" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
         <AssociationConnector Association="QuanLyBanHangModel.fk_orders__customers" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanHangModel.fk_orders__employees" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanHangModel.fk_order_details__orders" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyBanHangModel.fk_order_details__products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.products" Width="1.5" PointX="7.375" PointY="1" />
+        <AssociationConnector Association="QuanLyBanHangModel.fk_order_details__products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

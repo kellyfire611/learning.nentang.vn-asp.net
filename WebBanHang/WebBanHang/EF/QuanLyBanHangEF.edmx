@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuanLyBanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QuanLyBanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="configs">
           <Key>
             <PropertyRef Name="Id" />
@@ -101,6 +101,7 @@
           <Property Name="quantity_per_unit" Type="nvarchar" MaxLength="50" />
           <Property Name="discontinued" Type="tinyint" Nullable="false" />
           <Property Name="category" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="text" />
         </EntityType>
         <Association Name="fk_order_details__orders">
           <End Role="orders" Type="Self.orders" Multiplicity="1" />
@@ -174,8 +175,7 @@
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyBanHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -240,7 +240,7 @@
           <Property Name="order_detail_status" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="date_allocated" Type="DateTime" Precision="3" />
           <NavigationProperty Name="orders" Relationship="Self.fk_order_details__orders" FromRole="order_details" ToRole="orders" />
-          <NavigationProperty Name="products" Relationship="Self.fk_order_details__products" FromRole="order_details" ToRole="products" />
+          <NavigationProperty Name="products" Relationship="QuanLyBanHangModel.fk_order_details__products" FromRole="order_details" ToRole="products" />
         </EntityType>
         <EntityType Name="orders">
           <Key>
@@ -265,24 +265,6 @@
           <NavigationProperty Name="customers" Relationship="Self.fk_orders__customers" FromRole="orders" ToRole="customers" />
           <NavigationProperty Name="employees" Relationship="Self.fk_orders__employees" FromRole="orders" ToRole="employees" />
           <NavigationProperty Name="order_details" Relationship="Self.fk_order_details__orders" FromRole="orders" ToRole="order_details" />
-        </EntityType>
-        <EntityType Name="products">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="product_code" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="standard_cost" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="list_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="target_level" Type="Int32" />
-          <Property Name="reorder_level" Type="Int32" />
-          <Property Name="minimum_reorder_quantity" Type="Int32" />
-          <Property Name="quantity_per_unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="discontinued" Type="Byte" Nullable="false" />
-          <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="order_details" Relationship="Self.fk_order_details__products" FromRole="products" ToRole="order_details" />
         </EntityType>
         <Association Name="fk_orders__customers">
           <End Role="customers" Type="Self.customers" Multiplicity="0..1" />
@@ -320,25 +302,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_order_details__products">
-          <End Role="products" Type="Self.products" Multiplicity="1" />
-          <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="products">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="order_details">
-              <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="QuanLyBanHangEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="configs" EntityType="Self.configs" />
           <EntitySet Name="customers" EntityType="Self.customers" />
           <EntitySet Name="employees" EntityType="Self.employees" />
           <EntitySet Name="order_details" EntityType="Self.order_details" />
           <EntitySet Name="orders" EntityType="Self.orders" />
-          <EntitySet Name="products" EntityType="Self.products" />
           <AssociationSet Name="fk_orders__customers" Association="Self.fk_orders__customers">
             <End Role="customers" EntitySet="customers" />
             <End Role="orders" EntitySet="orders" />
@@ -351,11 +320,43 @@
             <End Role="orders" EntitySet="orders" />
             <End Role="order_details" EntitySet="order_details" />
           </AssociationSet>
-          <AssociationSet Name="fk_order_details__products" Association="Self.fk_order_details__products">
+          <EntitySet Name="products" EntityType="QuanLyBanHangModel.products" />
+          <AssociationSet Name="fk_order_details__products" Association="QuanLyBanHangModel.fk_order_details__products">
             <End Role="products" EntitySet="products" />
             <End Role="order_details" EntitySet="order_details" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_code" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="standard_cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="list_price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="target_level" Type="Int32" />
+          <Property Name="reorder_level" Type="Int32" />
+          <Property Name="minimum_reorder_quantity" Type="Int32" />
+          <Property Name="quantity_per_unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="discontinued" Type="Byte" Nullable="false" />
+          <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="order_details" Relationship="QuanLyBanHangModel.fk_order_details__products" FromRole="products" ToRole="order_details" />
+        </EntityType>
+        <Association Name="fk_order_details__products">
+          <End Type="QuanLyBanHangModel.products" Role="products" Multiplicity="1" />
+          <End Type="QuanLyBanHangModel.order_details" Role="order_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_details">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -449,18 +450,19 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="QuanLyBanHangModel.products">
               <MappingFragment StoreEntitySet="products">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="product_code" ColumnName="product_code" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="standard_cost" ColumnName="standard_cost" />
-                <ScalarProperty Name="list_price" ColumnName="list_price" />
-                <ScalarProperty Name="target_level" ColumnName="target_level" />
-                <ScalarProperty Name="reorder_level" ColumnName="reorder_level" />
-                <ScalarProperty Name="minimum_reorder_quantity" ColumnName="minimum_reorder_quantity" />
-                <ScalarProperty Name="quantity_per_unit" ColumnName="quantity_per_unit" />
-                <ScalarProperty Name="discontinued" ColumnName="discontinued" />
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="discontinued" ColumnName="discontinued" />
+                <ScalarProperty Name="quantity_per_unit" ColumnName="quantity_per_unit" />
+                <ScalarProperty Name="minimum_reorder_quantity" ColumnName="minimum_reorder_quantity" />
+                <ScalarProperty Name="reorder_level" ColumnName="reorder_level" />
+                <ScalarProperty Name="target_level" ColumnName="target_level" />
+                <ScalarProperty Name="list_price" ColumnName="list_price" />
+                <ScalarProperty Name="standard_cost" ColumnName="standard_cost" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_code" ColumnName="product_code" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

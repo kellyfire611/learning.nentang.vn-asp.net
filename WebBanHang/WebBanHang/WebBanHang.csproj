@@ -190,6 +190,7 @@
     <Content Include="Content\img\icon-3.png" />
     <Content Include="Content\img\marketing-1.png" />
     <Content Include="Content\img\marketing-2.png" />
+    <Content Include="Content\img\no-photo.png" />
     <Content Include="Content\img\slider-1.jpg" />
     <Content Include="Content\img\slider-2.jpg" />
     <Content Include="Content\img\slider-3.jpg" />
@@ -253,6 +254,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="UploadedFiles\ProductImages\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\File\" />
   </ItemGroup>

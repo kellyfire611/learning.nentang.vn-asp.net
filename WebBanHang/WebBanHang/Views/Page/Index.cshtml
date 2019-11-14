@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@using WebBanHang.EF;
 
 <!-- Home slider -->
 @Html.Partial("_HomeSlider")
@@ -8,3 +9,50 @@
 <!-- Home Marketing -->
 @Html.Partial("_HomeMarketing")
 <!-- /End Home Marketing -->
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Danh sách Sản phẩm</h1>
+        <p class="lead text-muted">
+            Các sản phẩm với chất lượng, uy tín, cam kết từ nhà Sản xuất, phân phối và bảo hành
+            chính hãng.
+        </p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        @foreach (products sanpham in ViewBag.DanhSachSanPham)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <a href="/php/twig/frontend/sanpham/chitiet?sp_ma=1">
+                        @if (String.IsNullOrEmpty(sanpham.image))
+                        {
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="350" src="~/Content/img/no-photo.png">
+                        }
+                        else
+                        {
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="350" src="~/UploadedFiles/ProductImages/@sanpham.image">
+                        }
+                    </a>
+                    <div class="card-body">
+                        <a href="/php/twig/frontend/sanpham/chitiet?sp_ma=1">
+                            <h5>@sanpham.product_name</h5>
+                        </a>
+                        <h6>@sanpham.category</h6>
+                        <p class="card-text">@sanpham.description</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-sm btn-outline-secondary" href="/php/twig/frontend/sanpham/chitiet?sp_ma=1">Xem chi tiết</a>
+                            </div>
+                            <small class="text-muted text-right">
+                                <b>@sanpham.standard_cost vnđ</b>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

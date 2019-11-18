@@ -26,7 +26,7 @@
         {
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <a href="/php/twig/frontend/sanpham/chitiet?sp_ma=1">
+                    <a href="/sanpham-chitiet?idProduct=@sanpham.id">
                         @if (String.IsNullOrEmpty(sanpham.image))
                         {
                             <img class="bd-placeholder-img card-img-top" width="100%" height="350" src="~/Content/img/no-photo.png">
@@ -37,14 +37,14 @@
                         }
                     </a>
                     <div class="card-body">
-                        <a href="/php/twig/frontend/sanpham/chitiet?sp_ma=1">
+                        <a href="/sanpham-chitiet?idProduct=@sanpham.id">
                             <h5>@sanpham.product_name</h5>
                         </a>
                         <h6>@sanpham.category</h6>
                         <p class="card-text">@sanpham.description</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a class="btn btn-sm btn-outline-secondary" href="/php/twig/frontend/sanpham/chitiet?sp_ma=1">Xem chi tiết</a>
+                                <a class="btn btn-sm btn-outline-secondary" href="/sanpham-chitiet?idProduct=@sanpham.id">Xem chi tiết</a>
                             </div>
                             <small class="text-muted text-right">
                                 <b>@sanpham.standard_cost vnđ</b>

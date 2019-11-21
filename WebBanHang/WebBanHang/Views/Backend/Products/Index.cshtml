@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebBanHang.EF.products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Backend/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách Sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ảnh đại diện
+        </th>
+        <th>
+            Mã sản phẩm
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Giá niêm yết
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Ngưng sử dụng
+        </th>
+        <th>
+            Danh mục mặt hàng
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @if (String.IsNullOrEmpty(item.image))
+            {
+                <img class="bd-placeholder-img card-img-top img-thumbnail" style="width: 100px; height: 100px;" src="~/Content/img/no-photo.png">
+            }
+            else
+            {
+                <img class="bd-placeholder-img card-img-top img-thumbnail" style="width: 100px; height: 100px;" src="~/UploadedFiles/ProductImages/@item.image">
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.standard_cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.list_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity_per_unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.discontinued)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>

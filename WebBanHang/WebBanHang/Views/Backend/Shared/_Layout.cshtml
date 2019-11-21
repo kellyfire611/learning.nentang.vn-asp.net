@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Backend Side Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+</head>
+<body class="d-flex flex-column h-100">
+    <!-- Header navbar -->
+    @Html.Partial("~/Views/Backend/Shared/_HeaderNavBar.cshtml")
+    <!-- /End Header navbar -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- sidebar -->
+            @Html.Partial("~/Views/Backend/Shared/_Sidebar.cshtml")
+            <!-- end sidebar -->
+
+            <main role="main" class="col-md-10 ml-sm-auto px-4 mb-2">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    @Html.Partial("~/Views/Backend/Shared/_Footer.cshtml")
+    <!-- /End Footer -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿@model WebBanHang.EF.products
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Backend/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>products</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.standard_cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.standard_cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.list_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.list_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.target_level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.target_level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reorder_level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reorder_level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.minimum_reorder_quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.minimum_reorder_quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity_per_unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity_per_unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.discontinued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.discontinued)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

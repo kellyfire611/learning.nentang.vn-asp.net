@@ -72,11 +72,20 @@ namespace WebBanHang
             );
 
             // route trang Sản phẩm
-            // URL: /dang-ky
+            // URL: /admin/products
             routes.MapRoute(
                 name: "admin.products.index",
-                url: "admin/products", //https://domain.com/admin/dashboard
+                url: "admin/products", 
                 defaults: new { controller = "Products", action = "Index" },
+                namespaces: new string[] { "WebBanHang.Controllers.Backend" }
+            );
+
+            // route trang Thêm mới Sản phẩm
+            // URL: /admin/producs/create
+            routes.MapRoute(
+                name: "admin.products.create",
+                url: "admin/products/create", 
+                defaults: new { controller = "Products", action = "Create" },
                 namespaces: new string[] { "WebBanHang.Controllers.Backend" }
             );
 

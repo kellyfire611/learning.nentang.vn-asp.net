@@ -89,6 +89,24 @@ namespace WebBanHang
                 namespaces: new string[] { "WebBanHang.Controllers.Backend" }
             );
 
+            // route trang Sửa Sản phẩm
+            // URL: /admin/producs/edit/{id}
+            routes.MapRoute(
+                name: "admin.products.edit",
+                url: "admin/products/edit/{id}",
+                defaults: new { controller = "Products", action = "Edit" },
+                namespaces: new string[] { "WebBanHang.Controllers.Backend" }
+            );
+
+            // route trang Xóa Sản phẩm
+            // URL: /admin/producs/delete/{id}
+            routes.MapRoute(
+                name: "admin.products.delete",
+                url: "admin/products/delete/{id}",
+                defaults: new { controller = "Products", action = "Delete" },
+                namespaces: new string[] { "WebBanHang.Controllers.Backend" }
+            );
+
             // Route mặc định của Trang web
             // URL: /
             routes.MapRoute(

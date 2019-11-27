@@ -5,11 +5,11 @@
     Layout = "~/Views/Backend/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Xóa Sản phẩm</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn có chắc chắn muốn xóa Sản phẩm này không?</h3>
 <div>
-    <h4>products</h4>
+    <h4>Sản phẩm</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -106,16 +106,67 @@
 
         <dd>
             @Html.DisplayFor(model => model.image)
+            @if (String.IsNullOrEmpty(ViewBag.Product.image))
+            {
+                <img class="bd-placeholder-img card-img-top img-thumbnail" style="width: 100px; height: 100px;" src="~/Content/img/no-photo.png">
+            }
+            else
+            {
+                <img class="bd-placeholder-img card-img-top img-thumbnail" style="width: 100px; height: 100px;" src="~/UploadedFiles/ProductImages/@ViewBag.Product.image">
+            }
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("Delete", "Products", FormMethod.Post, new { id = "form-delete-product", @class = "btn btn-danger" }))
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-default" id="btn-delete-product" />
         </div>
     }
+    | @Html.ActionLink("Quay về Danh sách Sản phẩm", "Index")
 </div>
+
+@section scripts {
+<script>
+    $(document).ready(function () {
+        $('#form-delete-product').submit(function (e) {
+            e.preventDefault(); // Ngăn không cho gởi dữ liệu đến Server -> để mình tự xử lý
+
+            // Sử dụng SweetAlert để hiển thị popup confirm
+            Swal.fire({
+                title: 'Bạn có chắc chắn thực hiện thao tác này không?',
+                text: "Không thể phục hồi dữ liệu đã xóa!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đồng ý, tôi xác nhận Xóa!'
+            }).then((result) => {
+                if (result.value) { // Nếu nhấn Yes
+                    // Tiếp tục submit
+                    $.ajax({
+                        type: "POST",
+                        url: "/admin/products/delete/@ViewBag.Product.id",
+                        success: function () {
+                            // Nếu thành công -> điều hướng về trang Danh sách
+                            location.href = "/admin/products";
+                        },
+                        error: function () {
+                            // Nếu thất bại -> hiển thị popup thông báo
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Có lỗi xảy ra! Sản phẩm đang được sử dụng, không được phép xóa!',
+                                footer: '<a href="https://nentang.vn">Click vào đây để gọi hỗ trợ</a>'
+                            });
+                        }
+                    });
+                }
+            })
+        });
+    });
+</script>
+}

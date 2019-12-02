@@ -107,6 +107,15 @@ namespace WebBanHang
                 namespaces: new string[] { "WebBanHang.Controllers.Backend" }
             );
 
+            // Route dành cho API
+            // route api lấy danh sách sản phẩm
+            // URL: /api/products
+            routes.MapRoute(
+                name: "api.products",
+                url: "api/products",
+                defaults: new { controller = "Api", action = "GetProducts" }
+            );
+
             // Route mặc định của Trang web
             // URL: /
             routes.MapRoute(

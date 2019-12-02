@@ -164,3 +164,9 @@ D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\EntityFramewor
 D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\EntityFramework.SqlServer.xml
 D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\App_Data\QuanLyBanHang.mdf
 D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\App_Data\QuanLyBanHang_log.ldf
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\System.Net.Http.Formatting.dll
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\System.Web.Http.dll
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\System.Web.Http.WebHost.dll
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\System.Net.Http.Formatting.xml
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\System.Web.Http.xml
+D:\dnpcuong\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\System.Web.Http.WebHost.xml

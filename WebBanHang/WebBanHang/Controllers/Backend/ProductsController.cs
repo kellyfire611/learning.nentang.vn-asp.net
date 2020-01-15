@@ -90,7 +90,7 @@ namespace WebBanHang.Controllers.Backend
                     CloudBlobClient blobClient = storageacc.CreateCloudBlobClient();
 
                     //The next 2 lines create if not exists a container named "democontainer"
-                    CloudBlobContainer container = blobClient.GetContainerReference("webbanhang_uploadfiles");
+                    CloudBlobContainer container = blobClient.GetContainerReference("data");
                     container.CreateIfNotExists();
 
                     //The next 7 lines upload the file test.txt with the name DemoBlob on the container "democontainer"
@@ -98,7 +98,8 @@ namespace WebBanHang.Controllers.Backend
                     blockBlob.UploadFromStream(image.InputStream);
 
                     string _path = Path.Combine(_FileName);
-                    image.SaveAs(_path);
+                    //image.SaveAs(_path);
+
                     products.image = image.FileName;
                 }
 

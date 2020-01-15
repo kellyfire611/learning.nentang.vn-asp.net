@@ -5,8 +5,12 @@ Học ASP.NET - Tạo Trang Web Thương mại điện tử Bán hàng | nentang
 ## Hướng dẫn upload file lên Storage Azure
 https://social.technet.microsoft.com/wiki/contents/articles/51791.azure-storage-c-create-container-upload-and-download-blobs.aspx
 
+## Hướng dẫn upload / download / delete file trên Storage Azure
+https://www.c-sharpcorner.com/article/upload-download-and-delete-blob-files-in-azure-storage/
+
 ## Code lấy đường dẫn URL của BLOB trên Azure
- static void BlobUrl()
+```
+static void BlobUrl()
 {
     var account = new CloudStorageAccount(new StorageCredentials(accountName, accountKey), true);
     var cloudBlobClient = account.CreateCloudBlobClient();
@@ -15,3 +19,4 @@ https://social.technet.microsoft.com/wiki/contents/articles/51791.azure-storage-
     blob.UploadFromFile("File Path ....");//Upload file....
     var blobUrl = blob.Uri.AbsoluteUri;
 }
+```

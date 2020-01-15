@@ -9,11 +9,17 @@ using System.Web;
 using System.Web.Mvc;
 using WebBanHang.EF;
 
+//Add The following Namespaces to the project
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob; // Multipart
+
 namespace WebBanHang.Controllers.Backend
 {
     public class ProductsController : Controller
     {
         private QuanLyBanHangEntities db = new QuanLyBanHangEntities();
+        public string StorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=kellyfire611;AccountKey=1231321231231321313;EndpointSuffix=core.windows.net";
 
         // GET: Products
         public ActionResult Index()
@@ -68,13 +74,30 @@ namespace WebBanHang.Controllers.Backend
                         return View(String.Format("File có đuôi {0} không được chấp nhận. Vui lòng kiểm tra lại!", _FileNameExtension));
                     }
 
-                    string uploadFolderPath = Server.MapPath("~/UploadedFiles/ProductImages");
-                    if (Directory.Exists(uploadFolderPath) == false) // Nếu thư mục cần lưu trữ file upload không tồn tại (chưa có) => Tạo mới
-                    {
-                        Directory.CreateDirectory(uploadFolderPath);
-                    }
+                    // Upload file lên thư mục Web Server (VPS)
+                    //string uploadFolderPath = Server.MapPath("~/UploadedFiles/ProductImages");
+                    //if (Directory.Exists(uploadFolderPath) == false) // Nếu thư mục cần lưu trữ file upload không tồn tại (chưa có) => Tạo mới
+                    //{
+                    //    Directory.CreateDirectory(uploadFolderPath);
+                    //}
 
-                    string _path = Path.Combine(uploadFolderPath, _FileName);
+                    // Update file lên thư mục Storage Azure
+                    // Create Reference to Azure Storage Account
+                    String strorageconn = this.StorageConnectionString;
+                    CloudStorageAccount storageacc = CloudStorageAccount.Parse(strorageconn);
+
+                    //Create Reference to Azure Blob
+                    CloudBlobClient blobClient = storageacc.CreateCloudBlobClient();
+
+                    //The next 2 lines create if not exists a container named "democontainer"
+                    CloudBlobContainer container = blobClient.GetContainerReference("webbanhang_uploadfiles");
+                    container.CreateIfNotExists();
+
+                    //The next 7 lines upload the file test.txt with the name DemoBlob on the container "democontainer"
+                    CloudBlockBlob blockBlob = container.GetBlockBlobReference(_FileName);
+                    blockBlob.UploadFromStream(image.InputStream);
+
+                    string _path = Path.Combine(_FileName);
                     image.SaveAs(_path);
                     products.image = image.FileName;
                 }

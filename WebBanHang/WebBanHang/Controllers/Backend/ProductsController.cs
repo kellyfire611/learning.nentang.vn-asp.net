@@ -19,7 +19,7 @@ namespace WebBanHang.Controllers.Backend
     public class ProductsController : Controller
     {
         private QuanLyBanHangEntities db = new QuanLyBanHangEntities();
-        public string StorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=kellyfire611;AccountKey=1231321231231321313;EndpointSuffix=core.windows.net";
+        public string StorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=azurestudentsdiag959;AccountKey=yYLvvu+cHBGK/sBLIvbYkVzE/VBS+z5Tw4K5komw2ybyvFYIV7ilKtYZnfa7rYQwUvTSrmFniX9QNrLyq9y3sQ==;EndpointSuffix=core.windows.net";
 
         // GET: Products
         public ActionResult Index()
@@ -75,11 +75,18 @@ namespace WebBanHang.Controllers.Backend
                     }
 
                     // Upload file lên thư mục Web Server (VPS)
-                    //string uploadFolderPath = Server.MapPath("~/UploadedFiles/ProductImages");
-                    //if (Directory.Exists(uploadFolderPath) == false) // Nếu thư mục cần lưu trữ file upload không tồn tại (chưa có) => Tạo mới
-                    //{
-                    //    Directory.CreateDirectory(uploadFolderPath);
-                    //}
+                    string uploadFolderPath = Server.MapPath("~/UploadedFiles/ProductImages");
+                    if (Directory.Exists(uploadFolderPath) == false) // Nếu thư mục cần lưu trữ file upload không tồn tại (chưa có) => Tạo mới
+                    {
+                        Directory.CreateDirectory(uploadFolderPath);
+                    }
+
+                    // Copy file ảnh vào Thư mục UploadFiles/ProductImages trên Server
+                    //string _path = Path.Combine(uploadFolderPath, _FileName);
+                    //image.SaveAs(_path);
+
+                    // Lưu thông tin đường dẫn vào Database
+                    products.image = image.FileName;
 
                     // Update file lên thư mục Storage Azure
                     // Create Reference to Azure Storage Account
@@ -90,17 +97,12 @@ namespace WebBanHang.Controllers.Backend
                     CloudBlobClient blobClient = storageacc.CreateCloudBlobClient();
 
                     //The next 2 lines create if not exists a container named "democontainer"
-                    CloudBlobContainer container = blobClient.GetContainerReference("data");
+                    CloudBlobContainer container = blobClient.GetContainerReference("democontainer");
                     container.CreateIfNotExists();
 
                     //The next 7 lines upload the file test.txt with the name DemoBlob on the container "democontainer"
                     CloudBlockBlob blockBlob = container.GetBlockBlobReference(_FileName);
                     blockBlob.UploadFromStream(image.InputStream);
-
-                    string _path = Path.Combine(_FileName);
-                    //image.SaveAs(_path);
-
-                    products.image = image.FileName;
                 }
 
                 // Lưu dữ liệu

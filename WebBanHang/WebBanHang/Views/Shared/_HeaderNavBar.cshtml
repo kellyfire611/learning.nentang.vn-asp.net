@@ -7,10 +7,10 @@
                     @Html.RouteLink("Trang chủ", "page.trang_chu", null, new { @class="nav-link"})
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/php/twig/backend/pages/dashboard">Quản trị</a>
+                    @Html.RouteLink("Quản trị", "admin.page.dashboard", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/php/twig/frontend/sanpham/danhsach">Sản phẩm</a>
+                    @Html.RouteLink("Sản phẩm", "admin.products.index", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.RouteLink("Giới thiệu", "page.gioi_thieu", null, new { @class = "nav-link" })

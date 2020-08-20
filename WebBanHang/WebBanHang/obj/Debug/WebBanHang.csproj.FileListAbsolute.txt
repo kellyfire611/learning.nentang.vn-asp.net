@@ -359,7 +359,7 @@ H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\Antlr3.R
 H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\System.Diagnostics.DiagnosticSource.xml
 H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csprojAssemblyReference.cache
 H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
 H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll
 H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.pdb
+H:\nentang\daotao\learning.nentang.vn-asp.net\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csprojAssemblyReference.cache

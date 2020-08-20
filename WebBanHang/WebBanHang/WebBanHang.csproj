@@ -175,6 +175,7 @@
     <Compile Include="EF\products.cs">
       <DependentUpon>QuanLyBanHangEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\productsExtends.cs" />
     <Compile Include="EF\QuanLyBanHangEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

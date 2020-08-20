@@ -12,8 +12,15 @@ namespace WebBanHang.EF
 {
     public partial class products
     {
-        public string StorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=kellyfire611;AccountKey=1231321231231321313;EndpointSuffix=core.windows.net";
+        /// <summary>
+        /// Biến chứa chuỗi Kết nối đến Storage Azure
+        /// </summary>
+        public string StorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=azurestudentsdiag959;AccountKey=yYLvvu+cHBGK/sBLIvbYkVzE/VBS+z5Tw4K5komw2ybyvFYIV7ilKtYZnfa7rYQwUvTSrmFniX9QNrLyq9y3sQ==;EndpointSuffix=core.windows.net";
 
+        /// <summary>
+        /// Hàm lấy đường dẫn URL từ Storage Azure
+        /// </summary>
+        /// <returns>Image URL</returns>
         public string GetImageUrlFromAzureStore()
         {
             string blobUrl = "";
@@ -34,6 +41,15 @@ namespace WebBanHang.EF
             blobUrl = blockBlob.Uri.AbsoluteUri; //https://azure.storage.com/kellyfire/democontainer/hoahong.jpg
 
             return blobUrl;
+        }
+
+        /// <summary>
+        /// Hàm lấy đường dẫn từ Folder nằm trong dự án (ví dụ: folder /UploadedFiles/ProductImages/)
+        /// </summary>
+        /// <returns>Image URL</returns>
+        public string GetImageUrlFromFolder()
+        {
+            return "/UploadedFiles/ProductImages/" + this.image;
         }
     }
 }

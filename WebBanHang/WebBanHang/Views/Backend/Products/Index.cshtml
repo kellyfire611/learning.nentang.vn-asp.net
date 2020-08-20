@@ -48,6 +48,10 @@
             }
             else
             {
+                <!-- Code hiển thị đường dẫn ảnh lấy từ Thư mục FOLDER trong dự án -->
+                @*<img class="bd-placeholder-img card-img-top img-thumbnail" style="width: 100px; height: 100px;" src="@item.GetImageUrlFromFolder()">*@
+
+                <!-- Code hiển thị đường dẫn ảnh lấy từ Container trên AZURE Storage -->
                 <img class="bd-placeholder-img card-img-top img-thumbnail" style="width: 100px; height: 100px;" src="@item.GetImageUrlFromAzureStore()">
             }
         </td>
